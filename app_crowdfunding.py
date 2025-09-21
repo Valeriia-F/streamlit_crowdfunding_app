@@ -427,22 +427,22 @@ elif st.session_state.page == "results":
                      'Publishing': {'Others': 57.6, 'USA': 53.82}, 'Technology': {'Others': 28.86, 'USA': 34.7},
                      'Theater': {'Others': 58.51, 'USA': 49.61}}
 
-    st.title(f"{st.session_state.predicted_proba * 100:.2f}%")
+    st.markdown('<div style="margin-top: 120px;"></div>', unsafe_allow_html=True)
+    st.title(st.session_state.predicted_proba * 100:.2f)
 
     if st.session_state.predicted_proba * 100 > success_rates[st.session_state.category][st.session_state.country]:
-        st.write(f"the probability of success of your project. "
+        st.write(f"% the probability of success of your project. "
                  f"This is higher than for similar projects "
                  f"({success_rates[st.session_state.category][st.session_state.country]}%).")
     elif st.session_state.predicted_proba * 100 < success_rates[st.session_state.category][st.session_state.country]:
-        st.write(f"the probability of success of your project. "
+        st.write(f"% the probability of success of your project. "
                  f"This is lower than for similar projects "
                  f"({success_rates[st.session_state.category][st.session_state.country]}%).")
     else:
-        st.write(f"the probability of success of your project. "
+        st.write(f"% the probability of success of your project. "
                  f"This is the same as for similar projects "
                  f"({success_rates[st.session_state.category][st.session_state.country]}%).")
 
-    st.markdown('<div style="margin-top: 120px;"></div>', unsafe_allow_html=True)
 
     st.header("Recommendations")
 
