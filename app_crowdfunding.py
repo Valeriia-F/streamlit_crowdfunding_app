@@ -427,14 +427,7 @@ elif st.session_state.page == "results":
                      'Publishing': {'Others': 57.6, 'USA': 53.82}, 'Technology': {'Others': 28.86, 'USA': 34.7},
                      'Theater': {'Others': 58.51, 'USA': 49.61}}
 
-    # Форматируем число и применяем стили через HTML
-    formatted_probability = f"{st.session_state.predicted_proba * 100:.2f}%"
-
-    # Используем st.markdown с HTML и CSS для стилизации
-    st.markdown(
-        f'<div style="font-size: 300px; font-weight: bold; color: #17D989;">{formatted_probability}</div>',
-        unsafe_allow_html=True
-    )
+    st.title(f"{st.session_state.predicted_proba * 100:.2f}%")
 
     if st.session_state.predicted_proba * 100 > success_rates[st.session_state.category][st.session_state.country]:
         st.write(f"the probability of success of your project. "
