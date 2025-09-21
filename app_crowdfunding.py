@@ -96,7 +96,7 @@ if st.session_state.page == "home":
         st.title("Crowdfunding Project Success Predictor")
         st.subheader("Increase your chances of getting funded on Kickstarter with our forecast model")
         st.markdown('<div style="margin-top: 100px;"></div>', unsafe_allow_html=True)
-        st.button("Enter Data & Predict", on_click=navigate_to_input_data):
+        st.button("Enter Data & Predict", on_click=navigate_to_input_data)
 
 
 elif st.session_state.page == "input_data":
@@ -394,7 +394,7 @@ elif st.session_state.page == "input_data":
 
     st.markdown('<div style="margin-top: 56px;"></div>', unsafe_allow_html=True)
 
-    st.button("Predict", on_click=calculate_and_save_prediction):
+    st.button("Predict", on_click=calculate_and_save_prediction)
     st.caption("*Your data is used solely for the purpose of generating a prediction and is not stored")
 
 elif st.session_state.page == "results":
