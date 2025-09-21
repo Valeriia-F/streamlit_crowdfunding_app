@@ -79,6 +79,13 @@ explainer = load_shap_explainer()
 if "page" not in st.session_state:
     st.session_state.page = "home"
 
+def navigate_to_input_data():
+    st.session_state.page = 'input_data'
+
+def navigate_to_results():
+    st.session_state.page = 'results'
+
+
 # --- Main Page Content ---
 if st.session_state.page == "home":
     col1, col2 = st.columns([2, 1.5])
@@ -89,8 +96,7 @@ if st.session_state.page == "home":
         st.title("Crowdfunding Project Success Predictor")
         st.subheader("Increase your chances of getting funded on Kickstarter with our forecast model")
         st.markdown('<div style="margin-top: 100px;"></div>', unsafe_allow_html=True)
-        if st.button("Enter Data & Predict"):
-            st.session_state.page = "input_data"
+        st.button("Enter Data & Predict", on_click=navigate_to_input_data):
 
 
 elif st.session_state.page == "input_data":
@@ -383,14 +389,12 @@ elif st.session_state.page == "input_data":
         predicted_proba = lgbm.predict_proba(st.session_state.X_scaled)[0, 1]
         st.session_state.predicted_proba = predicted_proba
 
+        # Переход на страницу с результатами
+        navigate_to_results()
+
     st.markdown('<div style="margin-top: 56px;"></div>', unsafe_allow_html=True)
 
-    if st.button("Predict"):
-        if 'predicted_proba' in st.session_state:
-            del st.session_state['predicted_proba']
-        calculate_and_save_prediction()
-        st.session_state.page = "results"
-        st.rerun()
+    st.button("Predict", on_click=calculate_and_save_prediction):
     st.caption("*Your data is used solely for the purpose of generating a prediction and is not stored")
 
 elif st.session_state.page == "results":
@@ -1013,8 +1017,7 @@ elif st.session_state.page == "results":
                                 f"{recommendations_dict[feature_name]['decrease']}")
 
     st.markdown('<div style="margin-top: 56px;"></div>', unsafe_allow_html=True)
-    if st.button("Edit Data"):
-        st.session_state.page = "input_data"
+    st.button("Edit Data", onclick=navigate_to_input_data)
 
 
 
