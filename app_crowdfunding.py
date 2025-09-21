@@ -428,7 +428,7 @@ elif st.session_state.page == "results":
                      'Theater': {'Others': 58.51, 'USA': 49.61}}
 
     st.markdown('<div style="margin-top: 120px;"></div>', unsafe_allow_html=True)
-    st.title(st.session_state.predicted_proba * 100:.2f)
+    st.title(round(st.session_state.predicted_proba * 100, 2))
 
     if st.session_state.predicted_proba * 100 > success_rates[st.session_state.category][st.session_state.country]:
         st.write(f"% the probability of success of your project. "
