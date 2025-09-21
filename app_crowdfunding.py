@@ -1017,7 +1017,7 @@ elif st.session_state.page == "results":
                                 f"{recommendations_dict[feature_name]['decrease']}")
 
     st.markdown('<div style="margin-top: 56px;"></div>', unsafe_allow_html=True)
-    st.button("Edit Data", onclick=navigate_to_input_data)
+    st.button("Edit Data", on_click=navigate_to_input_data)
 
 
 
